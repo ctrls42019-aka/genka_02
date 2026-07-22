@@ -51,11 +51,11 @@ class EmotionWeb(tk.Tk):
         # 첫 화면 표시
         self.show_cover()
 
-    def find_image(self, 2.jpg):
+    def find_image(self, filename):
         """등록된 폴더에서 이미지 파일 찾기"""
 
         for folder in IMAGE_DIRS:
-            image_path = folder / 2.jpg
+            image_path = folder / filename
 
             if image_path.exists():
                 return image_path
@@ -167,69 +167,403 @@ class EmotionWeb(tk.Tk):
             "<Leave>",
             lambda event: self.canvas.configure(cursor="")
         )
+#%%
 
-    # 1번 화면
+
+    # Home
     def show_cover(self):
         self.current_page = "cover"
 
         if not self.show_image("1.jpg"):
             return
 
-        # 원본 이미지 기준 시작 버튼 영역
+        # 전시 안내 시작하기 버튼(전시 소개로)
         self.add_touch_area(
-            180, 1750,
-            900, 2050,
+            260, 1730,
+            820, 1833,
             self.show_exhibition,
-            debug=True
+            debug=False
         )
+        
+        
+#%%
 
-    # 2번 화면
+
+    # Sub_01-1
     def show_exhibition(self):
         self.current_page = "exhibition"
 
-        # 실제 두 번째 이미지 이름으로 수정
+        # 안내페이지
         if not self.show_image("2.jpg"):
             return
 
-        # 이전 버튼
+        # home 버튼
         self.add_touch_area(
-            40, 60,
-            250, 250,
+            126, 173,
+            412, 357,
             self.show_cover,
-            debug=True
+            debug=False
         )
 
-        # 다음 버튼
+        # 다음 버튼(재료 소개로)
         self.add_touch_area(
-            180, 1750,
-            900, 2050,
-            self.show_guide,
-            debug=True
+           313, 1728,
+           767, 1831,
+            self.show_Material,
+            debug=False
         )
+        
+        
+#%%
 
-    # 3번 화면
-    def show_guide(self):
-        self.current_page = "guide"
 
-        # 실제 세 번째 이미지 이름으로 수정
+    # Sub_02-1
+    def show_Material(self):
+        self.current_page = "Material"
+
+        # Sub_02-1
         if not self.show_image("3.jpg"):
             return
 
-        # 이전 버튼
+        # home 버튼
         self.add_touch_area(
-            40, 60,
-            250, 250,
-            self.show_exhibition,
-            debug=True
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
         )
 
-        # 표지로 돌아가기
+        # 다음 버튼(관람 안내로)
         self.add_touch_area(
-            180, 1750,
-            900, 2050,
-            self.show_cover,
-            debug=True
+            313, 1728,
+            767, 1831,
+            self.show_guide_01,
+            debug=False
         )
+        
+        
+#%%
+
+    # Sub_03-1
+    def show_guide_01(self):
+        self.current_page = "guide_01"
+
+        # Sub_03-1
+        if not self.show_image("4.jpg"):
+            return
+
+        # home 버튼
+        self.add_touch_area(
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
+        )
+
+        # 다음 버튼(프롤로그로)
+        self.add_touch_area(
+            313, 1183,
+            767, 1287,
+            self.show_prolog_1_1,
+            debug=False
+        )
+        
+
+#%%
+
+    # prolog_1_1
+    def show_prolog_1_1(self):
+        self.current_page = "prolog_1_1"
+
+        # Sub_04-1
+        if not self.show_image("6.jpg"):
+            return
+
+        # home 버튼
+        self.add_touch_area(
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
+        )
+
+        # 감정 기록 시작 버튼
+        # 임시로 전시 지도 버튼으로 사용
+        self.add_touch_area(
+            313, 1992,
+            767, 2095,
+            
+            # 여기서 map_01로 안넘어가요
+            self.show_map_01,
+            debug=False
+        )
+        
+        
+        
+#%%
+
+
+
+# 모르겠어요...ㅜㅠ
+# 스크롤 형식 구현...
+"""
+    # prolog_1_2
+    def show_prolog_1_2(self):
+        self.current_page = "prolog_1_2"
+
+        # Sub_04-1
+        if not self.show_image("7.jpg"):
+            return
+
+        # home 버튼
+        self.add_touch_area(
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
+        )
+
+        # 감정 기록 시작 버튼
+        self.add_touch_area(
+            313, 1992,
+            767, 2095,
+            self.show_map_01,
+            debug=False
+        )
+        
+     """
+     
+     
+#%%
+
+# 여기도요...
+# ai이용한 결과값 띄우기 구현...
+
+"""
+"""
+
+#%%
+def previous_page(self):
+    # map_01
+    def show_map_01(self):
+        self.current_page = "map_01"
+
+        # Sub_04-1
+        if not self.show_image("5.jpg"):
+            return
+
+        # home 버튼
+        self.add_touch_area(
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
+        )
+#%%
+# 전시지도 페이지 위치버튼
+
+
+        # 01흔들리다 버튼_1
+        self.add_touch_area(
+            173, 1451,
+            517, 1557,
+            self.show_map_02_1,
+            debug=False
+        )
+        
+        
+        # 02조여들다 버튼_1
+        self.add_touch_area(
+            173, 1589,
+            517, 1692,
+            self.show_map_02_2,
+            debug=False
+        )
+        
+        
+          # 03마주보다 버튼_1
+        self.add_touch_area(
+            173, 1724,
+            517, 1827,
+            self.show_map_02_3,
+            debug=False
+        )
+        
+         # 04고르다 버튼_1
+        self.add_touch_area(
+            173, 1859,
+            517, 1962,
+            self.show_map_02_4,
+            debug=False
+        )
+        
+        
+         # 05만들다 버튼_1
+        self.add_touch_area(
+            563, 1454,
+            907, 1557,
+            self.show_map_02_5,
+            debug=False
+        )
+        
+        
+          # 06머무르다 버튼_1
+        self.add_touch_area(
+            563, 1589,
+            907, 1692,
+            self.show_map_02_6,
+            debug=False
+        )
+        
+        
+         # 07비추다 버튼_1
+        self.add_touch_area(
+            563, 1724,
+            907, 1827,
+            self.show_map_02_7,
+            debug=False
+        )
+        
+        
+         # 08기록하다 버튼_1
+        self.add_touch_area(
+            563, 1859,
+            907, 1962,
+            self.show_map_02_8,
+            debug=False
+        )
+        
+        #%%
+        # 지도 맵 그림 이동 버튼
+        
+        
+         # 01흔들리다 버튼_2
+        self.add_touch_area(
+            449, 686,
+            559, 739,
+            self.show_map_02_1,
+            debug=False
+        )
+        # 02조여들다 버튼_2
+        self.add_touch_area(
+            339, 686,
+            449, 817,
+            self.show_map_02_2,
+            debug=False
+        )
+        
+      
+        
+        # 03마주보다 버튼_2
+        self.add_touch_area(
+            449, 742,
+            614, 968,
+            self.show_map_02_3,
+            debug=False
+        )
+        
+       
+        
+        # 04고르다 버튼_2
+        self.add_touch_area(
+            229, 818,
+            449, 914,
+            self.show_map_02_4,
+            debug=False
+        )
+        
+        # 04고르다 버튼_3
+        self.add_touch_area(
+            229, 914,
+            339, 979,
+            self.show_map_02_4,
+            debug=False
+        )
+        
+       
+        
+        # 05만들다 버튼_2
+        self.add_touch_area(
+            229, 979,
+            336, 1130,
+            self.show_map_02_5,
+            debug=False
+        )
+        
+        # 05만들다 버튼_3
+        self.add_touch_area(
+            339, 1027,
+            449, 1130,
+            self.show_map_02_5,
+            debug=False
+        )
+        
+      
+        
+        # 06머무르다 버튼_2
+        self.add_touch_area(
+            339, 914,
+            449, 1024,
+            self.show_map_02_6,
+            debug=False
+        )
+        
+        # 06머무르다 버튼_3
+        self.add_touch_area(
+            449, 968,
+            614, 1024,
+            self.show_map_02_6,
+            debug=False
+        )
+        
+        # 06머무르다 버튼_4
+        self.add_touch_area(
+            614, 854,
+            708, 1024,
+            self.show_map_02_6,
+            debug=False
+        )
+        
+       
+        
+        # 07비추다 버튼_2
+        self.add_touch_area(
+            614, 739,
+            779, 854,
+            self.show_map_02_7,
+            debug=False
+        )
+        
+       
+        
+        # 08기록하다 버튼_2
+        self.add_touch_area(
+            708, 854,
+            851, 1125,
+            self.show_map_02_8,
+            debug=False
+        )
+        
+#%%
+
+
+    # map_02_1
+    def show_map_02_1(self):
+        self.current_page = "map_02_1"
+
+        # Sub_04-1
+        if not self.show_image("11.jpg"):
+            return
+        
+        # home 버튼
+        self.add_touch_area(
+            126, 173,
+            412, 357,
+            self.show_cover,
+            debug=False
+        )
+#%%
+
 
     def previous_page(self):
         """Esc 키를 눌렀을 때 이전 화면으로 이동"""
@@ -239,6 +573,8 @@ class EmotionWeb(tk.Tk):
 
         elif self.current_page == "guide":
             self.show_exhibition()
+
+#%%
 
 
 if __name__ == "__main__":
