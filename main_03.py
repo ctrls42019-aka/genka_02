@@ -301,7 +301,7 @@ class EmotionWeb(tk.Tk):
             
             # 여기서 map_01로 안넘어가요
             self.show_map_01,
-            debug=False
+            debug=lseFa
         )
         
         
@@ -350,13 +350,14 @@ class EmotionWeb(tk.Tk):
 """
 
 #%%
-def previous_page(self):
+
+    
     # map_01
     def show_map_01(self):
         self.current_page = "map_01"
 
         # Sub_04-1
-        if not self.show_image("5.jpg"):
+        if not self.show_image("11.jpg"):
             return
 
         # home 버튼
@@ -366,6 +367,8 @@ def previous_page(self):
             self.show_cover,
             debug=False
         )
+        
+        
 #%%
 # 전시지도 페이지 위치버튼
 
