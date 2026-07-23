@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 23 08:42:43 2026
+
+@author: alalf
+"""
 
 import tkinter as tk
 from pathlib import Path
@@ -249,7 +254,7 @@ class EmotionWeb(tk.Tk):
         self.current_page = "guide_01"
 
         # Sub_03-1
-        if not self.show_image("4.jpg"):
+        if not self.show_image("6_02.jpg"):
             return
 
         # home 버튼
@@ -264,19 +269,20 @@ class EmotionWeb(tk.Tk):
         self.add_touch_area(
             313, 1183,
             767, 1287,
-            self.show_prolog_1_1,
+            self.show_prolog,
             debug=False
         )
         
 
 #%%
 
-    # prolog_1_1
-    def show_prolog_1_1(self):
-        self.current_page = "prolog_1_1"
+
+    # prolog
+    def show_prolog(self):
+        self.current_page = "prolog"
 
         # Sub_04-1
-        if not self.show_image("6.jpg"):
+        if not self.show_image("7_02.jpg"):
             return
 
         # home 버튼
@@ -292,14 +298,13 @@ class EmotionWeb(tk.Tk):
         self.add_touch_area(
             313, 1992,
             767, 2095,
-            
-            # 여기서 map_01로 안넘어가요
-            self.show_map_01,
+            self.show_map_00,
             debug=False
         )
         
         
         
+
 #%%
 
 
@@ -343,10 +348,10 @@ class EmotionWeb(tk.Tk):
 """
 
 #%%
-def previous_page(self):
-    # map_01
-    def show_map_01(self):
-        self.current_page = "map_01"
+    # 여기 맵 페이지로 안넘어가요..
+    # map_00
+def show_map_00(self):
+        self.current_page = "map_00"
 
         # Sub_04-1
         if not self.show_image("5.jpg"):
@@ -357,10 +362,10 @@ def previous_page(self):
             126, 173,
             412, 357,
             self.show_cover,
-            debug=False
+            debug=True
         )
 #%%
-# 전시지도 페이지 위치버튼
+# 전시지도 페이지 위치버튼 
 
 
         # 01흔들리다 버튼_1
@@ -434,7 +439,7 @@ def previous_page(self):
         )
         
         #%%
-        # 지도 맵 그림 이동 버튼
+        # 지도 맵 그림 이동 버튼 이미지누르면 넘어가게 했어요
         
         
          # 01흔들리다 버튼_2

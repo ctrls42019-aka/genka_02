@@ -282,7 +282,7 @@ class EmotionWeb(tk.Tk):
         self.current_page = "prolog"
 
         # Sub_04-1
-        if not self.show_image(".jpg"):
+        if not self.show_image("7_02.jpg"):
             return
 
         # home 버튼
