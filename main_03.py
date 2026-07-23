@@ -254,7 +254,7 @@ class EmotionWeb(tk.Tk):
         self.current_page = "guide_01"
 
         # Sub_03-1
-        if not self.show_image("4.jpg"):
+        if not self.show_image("6_02.jpg"):
             return
 
         # home 버튼
@@ -269,19 +269,20 @@ class EmotionWeb(tk.Tk):
         self.add_touch_area(
             313, 1183,
             767, 1287,
-            self.show_prolog_1_1,
+            self.show_prolog,
             debug=False
         )
         
 
 #%%
 
-    # prolog_1_1
-    def show_prolog_1_1(self):
-        self.current_page = "prolog_1_1"
+
+    # prolog
+    def show_prolog(self):
+        self.current_page = "prolog"
 
         # Sub_04-1
-        if not self.show_image("6.jpg"):
+        if not self.show_image(".jpg"):
             return
 
         # home 버튼
@@ -305,6 +306,7 @@ class EmotionWeb(tk.Tk):
         
         
         
+
 #%%
 
 
