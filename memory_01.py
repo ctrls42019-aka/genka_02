@@ -5,31 +5,32 @@ Created on Thu Jul 23 09:31:57 2026
 @author: alalf
 """
 
-#%%
 
-"""오늘의 감정 기록하기 - 1080 x 2280 고정형 전시 프로그램."""
-
-from __future__ import annotations
-
-import shutil
+"""- 오늘의 감정 기록하기 -"""
 import tkinter as tk
-from datetime import datetime
 from pathlib import Path
+import shutil
+
+
+
+
+from datetime import datetime
+
 
 
 WIDTH, HEIGHT = 1080, 2280
 ROOT = Path(__file__).resolve().parent
-IMAGE_DIR = ROOT / "images"
+IMAGE_DIR = Path(r"D:\genka-02\image\M-day-emotion")
 RECORD_DIR = ROOT / "records"
 
 EMOTIONS = [
-    ("불안", "04-anxiety.png"),
-    ("긴장", "05-tension.png"),
-    ("혼란", "06-confusion.png"),
-    ("마주함", "07-facing.png"),
-    ("해방", "08-release.png"),
-    ("안정", "09-calm.png"),
-    ("회복", "10-recovery.png"),
+    ("불안", "5-sub01-2.jpg"),
+    ("긴장", "5-sub01-3.jpg"),
+    ("혼란", "6-sub01-4.jpg"),
+    ("마주함", "7-sub01-5.jpg"),
+    ("해방", "8-sub01-6.jpg"),
+    ("안정", "9-sub01-7.jpg"),
+    ("회복", "10-sub01-8.jpg"),
 ]
 
 SHAPES = [
@@ -41,19 +42,19 @@ SHAPES = [
 ]
 
 
-class EmotionKiosk:
+class memory_01:
     def __init__(self) -> None:
         self.root = tk.Tk()
         self.root.title("오늘의 감정 기록하기")
         self.root.geometry(f"{WIDTH}x{HEIGHT}+0+0")
         self.root.resizable(False, False)
-        self.root.configure(bg="#fbf6ee")
+        self.root.configure(bg="#6A6257")
 
         self.canvas = tk.Canvas(
             self.root,
             width=WIDTH,
             height=HEIGHT,
-            bg="#fbf6ee",
+            bg="#6A6257",
             highlightthickness=0,
             cursor="hand2",
         )
@@ -70,13 +71,13 @@ class EmotionKiosk:
         self.shape_index: int | None = None
         self.fullscreen = False
         self.notice_id: int | None = None
-        self.show("02-intro.png")
+        self.show("2-main.jpg")
 
     def image(self, filename: str) -> tk.PhotoImage:
         if filename not in self.images:
             path = IMAGE_DIR / filename
             if not path.exists():
-                raise FileNotFoundError(f"화면 이미지가 없습니다: {path}")
+                raise FileNotFoundError(f"잠시만 기다려 주세요: {path}")
             self.images[filename] = tk.PhotoImage(file=path)
         return self.images[filename]
 
@@ -96,7 +97,7 @@ class EmotionKiosk:
         if self.screen == "intro":
             if self.inside(x, y, (245, 1570, 835, 1685)):
                 self.screen = "emotion"
-                self.show("04-emotion.png")
+                self.show("2-main.jpg")
             return
 
         if self.screen == "emotion":
@@ -202,4 +203,4 @@ class EmotionKiosk:
 
 
 if __name__ == "__main__":
-    EmotionKiosk().run()
+    memory_01().run()
